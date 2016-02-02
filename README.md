@@ -11,8 +11,9 @@ apt-get install avr-libc
 apt-get install avrdude
 
 
-### Simulavr 
+### Install Simulavr 
 
+```
 # Traumflug/simulavr version is much easier
 git clone https://github.com/Traumflug/simulavr
 cd simulavr
@@ -23,8 +24,9 @@ sudo apt-get install libtool-bin
 make
 ./src/simulavr -f  examples/simple_serial/simple_serial.elf
 <works>
+```
 
-###
+####
 
 OLD
 
