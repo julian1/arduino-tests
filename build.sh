@@ -1,11 +1,14 @@
 #!/bin/bash -x
 
-avr-gcc -Os -DF_CPU=16000000UL -mmcu=atmega328p -c test.c -o test.o || exit
+DEVICE=atmega328p
+# DEVICE=attiny2313
+
+avr-gcc -Os -DF_CPU=16000000UL -mmcu=$DEVICE -c test.c -o test.o || exit
 
 # avr-strip 
 
 # produces an elf...
-avr-gcc -mmcu=atmega328p test.o -o test.elf || exit
+avr-gcc -mmcu=$DEVICE test.o -o test.elf || exit
 
 avr-objcopy -O ihex -R .eeprom test.elf test.hex || exit
 
