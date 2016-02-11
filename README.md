@@ -1,6 +1,4 @@
 
-Ok, both usb to uart are pl2303 chips
-
 - pins are
 dtr
 txo
@@ -9,36 +7,12 @@ vcc
 gnd
 gnd
 
-
-    meteo@dell-home:~/arduino-tests$ s avrdude -F -V -c arduino -p ATMEGA328P -P /dev/ttyUSB0 -b 57600 -U flash:w:test.hex 
-
-    avrdude: AVR device initialized and ready to accept instructions
-
-    Reading | ################################################## | 100% 0.00s
-
-    avrdude: Device signature = 0x1e950f (probably m328p)
-    avrdude: NOTE: "flash" memory has been specified, an erase cycle will be performed
-             To disable this feature, specify the -D option.
-    avrdude: erasing chip
-    avrdude: reading input file "test.hex"
-    avrdude: input file test.hex auto detected as Intel Hex
-    avrdude: writing flash (270 bytes):
-
-    Writing | ################################################## | 100% 0.10s
-
-    avrdude: 270 bytes of flash written
-
-    avrdude: safemode: Fuses OK (E:00, H:00, L:00)
-
-    avrdude done.  Thank you.
-
-Now we should try to reset. and see if it responds.
-
------
-
-Ok, we want a reset
-
-
+```
+meteo@dell-home:~/arduino-tests$ s avrdude -F -V -c arduino -p ATMEGA328P -P /dev/ttyUSB0 -b 57600 -U flash:w:test.hex 
+...
+avrdude: AVR device initialized and ready to accept instructions
+...
+```
 
 ----
 
