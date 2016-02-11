@@ -17,6 +17,12 @@ avrdude: AVR device initialized and ready to accept instructions
 ----
 
 #### Refs
+ 
+  c programming - and uart
+  http://www.avrfreaks.net/forum/tut-soft-using-usart-serial-communications?page=all
+ 
+  c programming
+  https://www.ashleymills.com/node/327
 
   usb to serial
   https://www.youtube.com/watch?v=Vawhrr4COjI&app=desktop
