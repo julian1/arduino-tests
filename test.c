@@ -1,40 +1,41 @@
 
-/* This port correponds to the "-W 0x20,-" command line option. */
-#define special_output_port (*((volatile char *)0x20))
-
-/* This port correponds to the "-R 0x22,-" command line option. */
-#define special_input_port  (*((volatile char *)0x22))
-
-/* Poll the specified string out the debug port. */
-void debug_puts(const char *str) {
-  const char *c;
-
-  for(c = str; *c; c++)
-    special_output_port = *c;
+#include <avr/io.h>
+#include <util/delay.h>
+ 
+ 
+int main (void)
+{
+  unsigned char counter;
+  /* set PORTB for output*/
+  DDRB = 0xFF;
+ 
+  while (1)
+    {
+      /* set PORTB.2 high */
+      PORTB = 0xFF;
+ 
+      /* wait (10 * 120000) cycles = wait 1200000 cycles */
+      counter = 0;
+      while (counter != 50)
+  {
+    /* wait (30000 x 4) cycles = wait 120000 cycles */
+    _delay_loop_2(30000);
+    counter++;
+  }
+ 
+      /* set PORTB.2 low */
+      PORTB = 0x00;
+ 
+      /* wait (10 * 120000) cycles = wait 1200000 cycles */
+      counter = 0;
+      while (counter != 50)
+  {
+    /* wait (30000 x 4) cycles = wait 120000 cycles */
+    _delay_loop_2(30000);
+    counter++;
+  }
+    }
+ 
+  return 1;
 }
-
-/* Main for test program.  Enter a string and echo it. */
-int main() {
-  volatile char in_char;
-
-  /* Output the prompt string */
-  debug_puts("\nPress any key and enter:\n> ");
-
-  /* Input one character but since line buffered, blocks until a CR. */
-  in_char = special_input_port;
-
-  /* Print the "what you entered:" message. */
-  debug_puts("\nYou entered: ");
-
-  /* now echo the rest of the characters */
-  do {
-    special_output_port = in_char;
-  } while((in_char = special_input_port) != '\n');
-
-  special_output_port = '\n';
-  special_output_port = '\n';
-
-  return 0;
-}
-
 
